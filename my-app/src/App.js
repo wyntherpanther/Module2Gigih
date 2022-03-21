@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Search from './pages/home/index.js';
 
 function App() {
   return (
@@ -15,11 +16,15 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          {/* <input type="search"></input>
+          <button> Search </button> */}
+          <Search/>
           Learn React
         </a>
       </header>
     </div>
   );
 }
+
 
 export default App;
