@@ -1,0 +1,478 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(255, 94, 0);
+  color: black;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.main2 {
+  width: 1100px;
+  background-color: #ffffff;
+  padding: 0 100px;
+  padding-bottom: 60px;
+  transition: all 0.3s;
+  height: fit-content;
+  display: block;
+}
+
+.header {
+  font-size: 100px;
+  font-family: "Raleway", sans-serif;
+  padding: 50px 0 0 0;
+  transition: all 0.3s;
+}
+
+.header1 {
+  font-size: 50px;
+  font-family: "Raleway", sans-serif;
+  margin: 40px 0 20px 0;
+  transition: all 0.3s;
+}
+
+.desc {
+  font-weight: normal;
+  padding: 30px 30px 30px 0;
+  line-height: 25px;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  transition: all 0.3s;
+}
+
+.songTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  max-height: 2.5em;
+  line-height: 1.8em;
+}
+
+.Songs {
+  display: flex;
+  justify-content: center;
+
+  transition: all 0.3s;
+}
+
+.carousel-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.favoriteSongs {
+  width: 260px;
+  height: fit-content;
+  float: left;
+  background-color: rgb(255, 94, 0);
+  padding: 10px;
+  text-align: center;
+  margin: 50px 30px 10px 0;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  opacity: 0.5;
+  transform: scale(90%);
+  transition: all 0.3s;
+  color: white;
+}
+
+.favoriteSongs:hover {
+  opacity: 1;
+  transform: scale(100%);
+}
+
+/* .favoriteSongs:nth-of-type(3) {
+  opacity: 0.5;
+
+  transform: translate(-5%, 10%) scale(90%);
+} */
+
+.content {
+  position: relative;
+  padding: 10px;
+  color: white;
+}
+
+.songTitle {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.songArtist {
+  font-weight: normal;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.songAlbum {
+  font-weight: lighter;
+  font-size: 18px;
+  padding-bottom: 3px;
+}
+
+img.album {
+  width: 240px;
+}
+
+form {
+  font-weight: normal;
+  border-top: 1px solid rgb(214, 214, 214);
+  padding-top: 30px;
+}
+
+input {
+  margin: 10px 0;
+  padding: 20px;
+  margin: 10px 0 30px 0;
+  width: 100%;
+  border: 1px solid #dee7ec;
+}
+
+.buttonTemplate {
+  padding: 12px 24px;
+  margin: 10px 10px 10px 0px;
+  border-radius: 4px;
+  opacity: 0.8;
+  color: white;
+}
+
+.buttonTemplate:hover {
+  opacity: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.submit {
+  line-height: 40px;
+  padding: 0 25px;
+  border-radius: 50%;
+}
+
+.btn-message1 {
+  background-color: rgb(255, 94, 0);
+  box-shadow: 0 7px rgba(255, 94, 0, 0.3);
+  padding: 10px 40px;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-message1:active {
+  position: relative;
+  top: 7px;
+  box-shadow: none;
+  color: white;
+}
+
+.btn-message1:hover {
+  color: white;
+}
+
+.formTitle {
+  margin: 10px 0;
+}
+
+.formDescription {
+  margin: 10px 0;
+}
+
+.playSong {
+  display: block;
+  background-color: white;
+  font-size: large;
+  color: rgb(255, 94, 0);
+  text-decoration: none;
+  margin: 20px 10px;
+  padding: 5px 15px;
+  right: 5px;
+}
+
+span {
+  padding: 0 3px;
+}
+
+.playSong:hover {
+  color: rgb(255, 94, 0);
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  background-color: linear-gradient(to right,
+      rgb(255, 94, 0),
+      rgba(255, 94, 0, 0));
+  height: 440px;
+  margin-top: 30px;
+  display: inline;
+  max-width: 50px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.songPlayer {
+  align-self: center;
+  width: 100%;
+}
+
+.header1 {
+  border-top: 1px solid rgb(241, 241, 241);
+  padding-top: 50px;
+}
+
+@media all and (max-width: 1000px) {
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+  }
+
+  .main2 {
+    width: 100%;
+    padding: 0 80px;
+  }
+
+  .header {
+    font-size: 80px;
+    text-align: left;
+  }
+
+  .desc {
+    font-weight: normal;
+
+    text-align: justify;
+  }
+
+  .carousel-inner {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  form {
+    margin-bottom: 50px;
+  }
+}
+
+@media all and (max-width: 670px) {
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+  }
+
+  .carousel-inner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main2 {
+    width: 414px;
+    padding: 0 50px;
+  }
+
+  .header {
+    font-size: 60px;
+
+    text-align: left;
+  }
+
+  .desc {
+    text-align: justify;
+  }
+
+  .header1 {
+    font-size: 40px;
+
+    margin: 0px 0 20px 0;
+  }
+
+  form {
+    margin-bottom: 50px;
+  }
+}
