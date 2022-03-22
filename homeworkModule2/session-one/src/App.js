@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import data from './module.js';
 
@@ -9,12 +9,12 @@ function App() {
 
       
       <header className="App-header">
-        <div class="main2">
-      <h1 class="header">
+        <div className="main2">
+      <h1 className="header">
         Wynnie's <br />
         Playlist.
       </h1>
-      <p class="desc">
+      <p className="desc">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati
         sequi, qui id ipsam reprehenderit, saepe vitae eveniet, velit numquam
         architecto molestiae? Quos nostrum saepe excepturi iste assumenda itaque
@@ -24,13 +24,13 @@ function App() {
         nam quo, esse at laudantium.
       </p>
       <div
-        class="Songs carousel slide"
+        className="Songs carousel slide"
         id="carouselExampleControls"
         data-ride="carousel"
       >
-        <div class="carousel-inner">
-          <div class="favoriteSongs carousel-item active">
-            <div class="wrapper">
+        <div className="carousel-inner">
+          <div className="favoriteSongs carousel-item active">
+            <div className="wrapper">
               <img className="album" id="albumImage" src={data.album.images[0].url} alt="albumImage"/>
         
         {/* Edit <code>src/App.js</code> and save to reload. */}
@@ -41,6 +41,7 @@ function App() {
           </div>
         </div>
         </div>
+        
 
 
         </div>
