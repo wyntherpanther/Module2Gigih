@@ -36,7 +36,7 @@ function App() {
         {/* Edit <code>src/App.js</code> and save to reload. */}
               <h1 className="songTitle">{data.name}</h1>
               <h2 className="songArtist">{data.artists[0].name}</h2>
-              <a href="https://reactjs.org" className="playSong buttonTemplate"><span>&#x266A;</span> Play</a>
+              <a href="https://reactjs.org" className="playSong buttonTemplate"><span>&#x266A;</span> Select</a>
               </div>
           </div>
         </div>
