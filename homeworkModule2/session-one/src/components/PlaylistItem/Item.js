@@ -4,6 +4,7 @@ const Item = ({album, name, artists, href}) => {
         <div className="carousel-inner">
           <div className="favoriteSongs carousel-item active">
             <div className="wrapper">
+              
               <img className="album" id="albumImage" src={album.images[0].url } alt="albumImage"/>
         
         {/* Edit <code>src/App.js</code> and save to reload. */}
