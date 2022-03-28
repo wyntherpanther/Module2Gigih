@@ -15,9 +15,7 @@ const Header = ({children}) =>{
         nam quo, esse at laudantium.
       </p>
       <div
-        className="Songs carousel slide"
-        id="carouselExampleControls"
-        data-ride="carousel"
+        className="Songs "
       >
       {children}
     </div>

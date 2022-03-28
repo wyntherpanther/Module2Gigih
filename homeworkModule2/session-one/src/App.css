@@ -233,8 +233,9 @@ body {
 .Songs {
   display: flex;
   justify-content: center;
-
   transition: all 0.3s;
+  flex-wrap: wrap;
+  margin: 50px 30px 10px 0;
 }
 
 .carousel-inner {
@@ -243,6 +244,7 @@ body {
   flex-wrap: wrap;
   text-align: center;
   transition: all 0.3s;
+  margin: 0 10px;
 }
 
 .favoriteSongs {
@@ -252,7 +254,7 @@ body {
   background-color: rgb(255, 94, 0);
   padding: 10px;
   text-align: center;
-  margin: 50px 30px 10px 0;
+  /*  */
   border-bottom: 1px solid rgb(214, 214, 214);
   opacity: 0.5;
   transform: scale(90%);
