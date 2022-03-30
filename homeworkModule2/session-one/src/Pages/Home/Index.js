@@ -1,13 +1,13 @@
 import React from "react";
-import Header from "../../components/header/header.js";
-// import Item from "../../components/PlaylistItem/Item.js";
-// import Login from "../../components/login.js";
-// import data from '../../module.js';
+import Header from "../../components/header/header";
+import Description from "../../components/description";
 
 
 const Playlist = () => {
       return (
-          <Header/>    
+          <Header>
+              <Description/>
+          </Header>
       );
 };
   

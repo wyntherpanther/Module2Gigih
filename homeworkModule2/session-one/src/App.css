@@ -256,7 +256,6 @@ body {
   background-color: rgb(255, 94, 0);
   padding: 10px;
   text-align: center;
-  /*  */
   border-bottom: 1px solid rgb(214, 214, 214);
   opacity: 0.7;
   transform: scale(90%);
@@ -381,7 +380,6 @@ input:focus {
 }
 
 .playSong {
-  display: block;
   background-color: white;
   font-size: large;
   color: rgb(255, 94, 0);
