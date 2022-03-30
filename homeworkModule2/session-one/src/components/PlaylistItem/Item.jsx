@@ -9,11 +9,11 @@ const Item = ({ album, name, artists, uri }) => {
   }
 
   useEffect(() => {
-    const playlist = localStorage.getItem("uri");
+    const playlist = localStorage.getItem(uri);
     if (playlist === "selected") {
       change("Deselect")
     }
-  }, []);
+  });
 
   const changing = () => {
     if (text === "Select") {

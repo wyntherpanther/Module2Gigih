@@ -79,7 +79,7 @@ const Header = ({children}) =>{
 
         </div>
         
-      {tracks.map((track, id) => <Item {...track} key={id}/>)}
+      {tracks.map((track) => <Item {...track} key={track.id}/>)}
 
       </div>
 
