@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from 'axios';
-import Item from "../PlaylistItem/Item";
+import ItemContainer from "../PlaylistItem/handleItem";
 
 
 const Header = ({children}) =>{
@@ -17,15 +17,12 @@ const Header = ({children}) =>{
     useEffect(() => {
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
-        // getToken()
         if (!token && hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             window.location.hash = ""
             window.localStorage.setItem("token", token)
         }
-
         setToken(token)
-
     }, [])
 
 
@@ -48,10 +45,7 @@ const Header = ({children}) =>{
 
             setTracks(data.tracks.items)
         }
-    
 
-
-  
     return(
       
     <div className="main2">
@@ -68,7 +62,6 @@ const Header = ({children}) =>{
                 <input type="text" placeholder="Search" onChange={e => setSearchKey(e.target.value)}/>
                         <button id="button1" className="searchButton buttonTemplate btn-message1" type={"submit"}>Search</button>
             </form>
-
             : <h2>Please login</h2>
         }
       </div>
@@ -79,7 +72,7 @@ const Header = ({children}) =>{
 
         </div>
         
-      {tracks.map((track) => <Item {...track} key={track.id}/>)}
+      <ItemContainer tracks={tracks}/>
 
       </div>
 
