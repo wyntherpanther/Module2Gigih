@@ -8,13 +8,13 @@ const ItemContainer = ({ tracks }) => {
     const handleSelectedTrack = (track) => {
         const alreadySelected = selectedTracks.find(t => t.uri === track.uri)
         if (alreadySelected) {
-            setSelectedTracks(selectedTracks.filter(t => t.uri === track.uri))
+            setSelectedTracks(selectedTracks.filter(t => t.uri !== track.uri))
         } else {
-            setSelectedTracks([...selectedTracks, track])
+            setSelectedTracks((selectedTracks) => [...selectedTracks, track])
         }
     }
 
-    useEffect(() => {
+    useEffect((e) => {
         const combinedTrackWithSelectedTrack = tracks.map((track) => ({
             ...track,
             isSelected: selectedTracks.find(t => t.uri === track.uri),
@@ -27,11 +27,10 @@ const ItemContainer = ({ tracks }) => {
             const { uri } = item;
             return (
                 <Item key={uri} track={item} onSelectedTrack={handleSelectedTrack} />
-
             )
         })
     }
-    return <div className="carousel-inner">{renderPlayListItems()}</div>
+    return <div className="wholePlaylist">{renderPlayListItems()}</div>
 
 }
 export default ItemContainer;

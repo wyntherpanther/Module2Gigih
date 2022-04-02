@@ -1,0 +1,102 @@
+@media all and (max-width: 1000px) {
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: #ffffff;
+    }
+
+    .main2 {
+        width: 100%;
+        padding: 60px 80px;
+    }
+
+    .header {
+        font-size: 80px;
+        text-align: left;
+    }
+
+    .desc {
+        font-weight: normal;
+        text-align: justify;
+    }
+
+    .carousel-inner {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    form {
+        margin-bottom: 50px;
+        display: block;
+        
+    }
+    
+    .formHeader{
+        font-size: 40px;
+        text-align: left;
+    }
+
+    .searchButton {
+        margin-right: 0;
+        margin-left: 80px;
+        margin-top: 20px;
+    }
+
+}
+
+@media all and (max-width: 670px) {
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: #ffffff;
+    }
+
+    .carousel-inner {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main2 {
+        width: 414px;
+        padding: 60px 50px;
+    }
+
+    .header {
+        font-size: 60px;
+
+        text-align: left;
+    }
+
+    .formHeader{
+        font-size: 30px;
+
+        text-align: left;
+    }
+
+    .desc {
+        text-align: justify;
+    }
+
+    .header1 {
+        font-size: 40px;
+
+        margin: 0px 0 20px 0;
+    }
+
+    form {
+        margin-bottom: 50px;
+        display: block;
+    }
+
+
+    input {
+        text-align: center;
+    }
+
+    .loginButton {
+        display: block;
+    }
+}
