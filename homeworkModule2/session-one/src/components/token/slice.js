@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = { value: "" } 
+
 export const tokenSlice = createSlice(
     {
+        
         name: "account",
-        intialState: {
-            value: '',
-        },
+        initialState,
         devTools: true,
         reducers: {
             login: (state , action) => {

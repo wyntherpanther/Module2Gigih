@@ -1,26 +1,14 @@
 import {useEffect, useState} from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from 'axios';
 
 import Item from '../PlaylistItem/Item'
-import SearchComponent from "../search/search";
 import FormSubmission from "../Form/form";
-import { LoginButton } from "../login/login";
-import { login } from "../token/slice";
+import TokenTaker from "../token/takingToken.jsx"
 
 const Header = ({realHeader}) =>{
 
-    const autentication={
-    AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
-    CLIENT_ID: "a83b7e2cfcb64a2993d8cd07e9e28575",
-    CLIENT_SECRET: "da696cbbdd524ef5930fe289f20fb4ed",
-    REDIRECT_URL: "http://localhost:3000/",
-    RESPONSE_TYPE: "token",
-    SCOPE: "playlist-modify-private"};
-    
-    const currentAmount = useSelector(state => state.account.value);
-    const dispatch = useDispatch();
-    const [token, setToken] = useState("")
+    const token = useSelector(state => state.account.value);
     const [searchKey, setSearchKey] = useState("")
     const [tracks, setTracks] = useState([])
     const [selectedTracks, setSelectedTracks] = useState([])
@@ -32,31 +20,6 @@ const Header = ({realHeader}) =>{
     })
     
 
-    ///////////////////////////////////////////token handler/////////////////////////////////////////////////
-
-    useEffect(() => {
-        const hash = window.location.hash
-        let token = window.localStorage.getItem("token")
-        if (!token && hash) {
-            token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-            window.location.hash = ""
-            window.localStorage.setItem("token", token)
-        }
-        setToken(token)
-        dispatch(login(token))
-    }, [dispatch])
-  
-    
-    const logout = () => {
-        dispatch(login(''))
-        window.localStorage.removeItem("token")
-        alert("Logged out")
-    }
-
-    ///////////////////////////////////////////token handler/////////////////////////////////////////////////
-
-
-
     ///////////////////////////////////////////Search handler/////////////////////////////////////////////////
     
     const searchArtists = async (e) => {
@@ -66,7 +29,7 @@ const Header = ({realHeader}) =>{
             q: searchKey,
             type: "track"
         }
-        const {data} = await axios.get(searchUrl, {headers: {Authorization: `Bearer ${currentAmount}`,},params: Params})
+        const {data} = await axios.get(searchUrl, {headers: {Authorization: `Bearer ${token}`,},params: Params})
         setTracks(data.tracks.items)
     }
  
@@ -110,7 +73,7 @@ const Header = ({realHeader}) =>{
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const uris = selectedTracks.map(item => item.uri);
-        const headerAll = {Authorization: `Bearer ${currentAmount}`};
+        const headerAll = {Authorization: `Bearer ${token}`};
         const apiSpotify = "https://api.spotify.com/v1"
         const playlistRequest ={
             name: user.name,
@@ -137,7 +100,7 @@ const Header = ({realHeader}) =>{
     function renderPlayListItems() {
         return combinedTrack.map(item => {
             return (
-                <Item key={item.uri} track={item} onSelectedTrack={handleSelectedTrack} />
+                <Item key={item.uri} track={item} onSelectedTrack={handleSelectedTrack}/>
                 )
         })
     }
@@ -145,32 +108,16 @@ const Header = ({realHeader}) =>{
     return(
     <div className="whole">
 
-        <header className="header-login">
-            
-            <a href="http://localhost:3000/#" className="header-logo">Wynnie's</a>
-
-            {token 
-            ? <SearchComponent searchArtists={searchArtists} handleSearchChange={handleSearchChange}/>
-            : <h2 className="header-warning">Please login</h2>
-            }
-
-            {!token 
-            ? <LoginButton {...autentication}/>
-            : <button id="button1" className="loginButton" onClick={logout}>Logout</button>
-            }
-
-        </header>
-
+        <TokenTaker searchArtists={searchArtists} handleSearchChange={handleSearchChange}/>
+        
         <div className="body">
             <div className="main2">
-
                 {realHeader}
-
-                {currentAmount}
 
                 {token
                 ? <FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} /> 
-                : <h2 className="header-warning">Please login</h2>}
+                : <h2 className="header-warning">Please login</h2>
+                }
 
                 <div className="Songs">  
                     {renderPlayListItems()}
