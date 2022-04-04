@@ -1,9 +1,12 @@
 import {useEffect, useState} from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from 'axios';
+
 import Item from '../PlaylistItem/Item'
 import SearchComponent from "../search/search";
 import FormSubmission from "../Form/form";
-import { Login } from "../login/login";
+import { LoginButton } from "../login/login";
+import { login } from "../token/slice";
 
 const Header = ({realHeader}) =>{
 
@@ -15,7 +18,8 @@ const Header = ({realHeader}) =>{
     RESPONSE_TYPE: "token",
     SCOPE: "playlist-modify-private"};
     
-
+    const currentAmount = useSelector(state => state.account.value);
+    const dispatch = useDispatch();
     const [token, setToken] = useState("")
     const [searchKey, setSearchKey] = useState("")
     const [tracks, setTracks] = useState([])
@@ -39,12 +43,14 @@ const Header = ({realHeader}) =>{
             window.localStorage.setItem("token", token)
         }
         setToken(token)
-    }, [])
+        dispatch(login(token))
+    }, [dispatch])
   
-
+    
     const logout = () => {
-        setToken("")
+        dispatch(login(''))
         window.localStorage.removeItem("token")
+        alert("Logged out")
     }
 
     ///////////////////////////////////////////token handler/////////////////////////////////////////////////
@@ -60,7 +66,7 @@ const Header = ({realHeader}) =>{
             q: searchKey,
             type: "track"
         }
-        const {data} = await axios.get(searchUrl, {headers: {Authorization: `Bearer ${token}`,},params: Params})
+        const {data} = await axios.get(searchUrl, {headers: {Authorization: `Bearer ${currentAmount}`,},params: Params})
         setTracks(data.tracks.items)
     }
  
@@ -104,24 +110,27 @@ const Header = ({realHeader}) =>{
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const uris = selectedTracks.map(item => item.uri);
-        
+        const headerAll = {Authorization: `Bearer ${currentAmount}`};
+        const apiSpotify = "https://api.spotify.com/v1"
         const playlistRequest ={
             name: user.name,
             description: user.description,
             public: false,
         }
 
-        axios.get("https://api.spotify.com/v1/me", 
-        {headers: {Authorization: `Bearer ${token}`,}})
-        .then((response) =>{
-            axios.post(`https://api.spotify.com/v1/users/${response.data.id}/playlists`, playlistRequest,
-            {headers: {Authorization: `Bearer ${token}`,}} )
+        axios.get(`${apiSpotify}/me`, 
+        {headers: headerAll})
             .then((response) =>{
-                        axios.post(`https://api.spotify.com/v1/playlists/${response.data.id}/tracks`,
-                        { uris: uris }, {headers: {Authorization: `Bearer ${token}`,}})
+                axios.post(`${apiSpotify}/users/${response.data.id}/playlists`, playlistRequest,
+                {headers: headerAll} )
+                .then((response) =>{
+                    axios.post(`${apiSpotify}/playlists/${response.data.id}/tracks`,
+                    { uris: uris }, {headers:headerAll})
+                    alert("Spotify playlist added")
+                })     
             })
-        })
-    }
+        
+} 
     ///////////////////////////////////////////Form handler/////////////////////////////////////////////////
     
 
@@ -146,7 +155,7 @@ const Header = ({realHeader}) =>{
             }
 
             {!token 
-            ? <Login {...autentication}/>
+            ? <LoginButton {...autentication}/>
             : <button id="button1" className="loginButton" onClick={logout}>Logout</button>
             }
 
@@ -156,6 +165,8 @@ const Header = ({realHeader}) =>{
             <div className="main2">
 
                 {realHeader}
+
+                {currentAmount}
 
                 {token
                 ? <FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} /> 
