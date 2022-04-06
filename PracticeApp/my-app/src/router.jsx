@@ -5,7 +5,7 @@ import {
   Link
 } from "react-router-dom";
 import Search from "./pages/home";
-import { Trending } from "./pages/Trending/trending";
+import Trending from "./pages/Trending/trending";
 
 
 function AppRouter() {

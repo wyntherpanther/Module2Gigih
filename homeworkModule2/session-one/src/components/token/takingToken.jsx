@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { LoginButton } from "../login/login";
 import SearchComponent from "../search/search";
 import { login } from "./slice";
+import { Link } from "react-router-dom";
 
 
 const TokenTaker = ({ searchArtists, handleSearchChange }) => {
@@ -10,7 +11,7 @@ const TokenTaker = ({ searchArtists, handleSearchChange }) => {
         AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
         CLIENT_ID: "a83b7e2cfcb64a2993d8cd07e9e28575",
         CLIENT_SECRET: "da696cbbdd524ef5930fe289f20fb4ed",
-        REDIRECT_URL: "http://localhost:3000/",
+        REDIRECT_URL: "http://localhost:3000/createPlaylist/",
         RESPONSE_TYPE: "token",
         SCOPE: "playlist-modify-private"
     };
@@ -50,7 +51,7 @@ const TokenTaker = ({ searchArtists, handleSearchChange }) => {
 
         {!token
             ? <LoginButton {...autentication} />
-            : <button id="button1" className="loginButton" onClick={logout}>Logout</button>
+            : <Link to="/"><button id="button1" className="loginButton" onClick={logout}>Logout</button></Link>
         }
 
     </header>

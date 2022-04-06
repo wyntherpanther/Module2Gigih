@@ -110,6 +110,7 @@ header {
 .songForm {
     display: block;
     padding: 30px 30px 30px 40px;
+    transition: all 0.5;
 }
 
 .formHeader {
@@ -161,13 +162,21 @@ input {
     line-height: 2em;
 }
 
+@keyframes slideInFromLeft {
+    0% {
+      transform: translatey(20%);
+    }
+    100% {
+      transform: translatey(0);
+    }
+  }
+
 .Songs {
-    display: flex;
-    justify-content: center;
-    transition: all 0.3s;
-    flex-wrap: wrap;
+    animation: 1s ease-out 0s 1 slideInFromLeft;
     /* margin: 50px 30px 10px 0; */
 }
+
+
 
 .favoriteSongs {
     width: 260px;

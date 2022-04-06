@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 import axios from 'axios';
-
 import Item from '../PlaylistItem/Item'
 import FormSubmission from "../Form/form";
 import TokenTaker from "../token/takingToken.jsx"
+import {
+    Switch,
+    Route,
+  } from "react-router-dom";
 
 const Header = ({realHeader}) =>{
 
@@ -113,16 +116,18 @@ const Header = ({realHeader}) =>{
         <div className="body">
             <div className="main2">
                 {realHeader}
-
+                <Switch>
                 {token
-                ? <FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} /> 
-                : <h2 className="header-warning">Please login</h2>
+                ? <Route path="/createPlaylist"><FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} /> </Route>
+                : <Route path="/"><h2 className="header-warning">Please login</h2></Route>
                 }
-
+                </Switch>
+                
                 <div className="Songs">  
                     {renderPlayListItems()}
                 </div>
-
+                
+                
             </div>
         </div> 
     </div>

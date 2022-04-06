@@ -1,8 +1,7 @@
 import './App.css';
-// import Search from './pages/home/index';
+import { Sample } from './router';
 import {Provider} from 'react-redux';
 import { store } from './components/redux/store';
-import { Sample } from './router';
 
 
 function App() {
@@ -15,7 +14,7 @@ function App() {
         </Provider>
       </header>
     </div>
-  
+
   );
 }
 

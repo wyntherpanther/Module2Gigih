@@ -24,3 +24,7 @@
     background-color: rgb(37, 37, 37);
     
 }
+.Songs::after{
+    transform: translateY(0);
+    display:block;
+}

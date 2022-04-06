@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
 import Gif from "../../components/Gif/index.js";
-
-export const Trending = () => {
+const Trending = () => {
     const [gifs, setGifs] = useState([]);
 
     useEffect(() => {
@@ -11,10 +10,13 @@ export const Trending = () => {
     }, [])
 
     return (
-        <div className='trending-item'>
-            {gifs.length > 0 &&
-                (gifs.map((gif, id) => <Gif {...gif} key={id} />))
-            }
+        <div className='search-section'>
+            <div className='search-item'>
+                {gifs.length > 0 &&
+                    (gifs.map((gif, id) => <Gif {...gif} key={id} />))
+                }
+            </div>
         </div>
     )
 }
+export default Trending
