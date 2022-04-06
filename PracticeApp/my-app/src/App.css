@@ -42,13 +42,15 @@
 .description {
   background-color: #474b55;
   color: white;
-  padding: 20px 20px;
+  padding: 20px 30px;
   height: 200px;
   width: 50%;
+  text-align: left;
 }
 
 .container {
   display: flex;
+  padding: 20px 0;
 }
 
 h1 {
@@ -68,28 +70,22 @@ img {
 }
 
 .imgContainer {
-  max-height: 200px;
-  width: 50%;
+  height: 200px;
+  width: 400px;
 }
 
 form {
   font-weight: normal;
-  /* border-top: 1px solid rgb(214, 214, 214); */
   padding: 0 30px 30px 30px;
-  /* padding-top: 30px;
-  padding-left: 30px; */
   display: flex;
   justify-content: center;
 }
 
 .inputA {
-  /* margin: 0 30px 0 40px; */
   padding: 0 30px;
-  /* margin: 10px 0 30px 0; */
   width: 100%;
   border: none;
   border-bottom: 1px solid #dee7ec;
-  /* text-align: center; */
   font-family: "Roboto", sans-serif;
   font-size: 40px;
   height: 70px;
@@ -107,4 +103,13 @@ form {
 
 .Header {
   font-size: 40px;
+}
+
+.search-item {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: 40px;
+  align-items: center;
 }
