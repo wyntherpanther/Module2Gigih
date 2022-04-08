@@ -4,10 +4,7 @@ import axios from 'axios';
 import Item from '../PlaylistItem/Item'
 import FormSubmission from "../Form/form";
 import TokenTaker from "../token/takingToken.jsx"
-import {
-    Switch,
-    Route,
-  } from "react-router-dom";
+
 
 const Header = ({realHeader}) =>{
 
@@ -116,18 +113,10 @@ const Header = ({realHeader}) =>{
         <div className="body">
             <div className="main2">
                 {realHeader}
-                <Switch>
-                {token
-                ? <Route path="/createPlaylist"><FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} /> </Route>
-                : <Route path="/"><h2 className="header-warning">Please login</h2></Route>
-                }
-                </Switch>
-                
+                <FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} />
                 <div className="Songs">  
                     {renderPlayListItems()}
                 </div>
-                
-                
             </div>
         </div> 
     </div>

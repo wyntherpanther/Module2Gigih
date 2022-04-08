@@ -1,0 +1,58 @@
+header {
+    height: 45px;
+    padding: 0 190px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    
+}
+
+.header-login {
+    background-color: rgba(51, 51, 51, 1);
+    transition: all 0.3s;
+}
+
+.main2 {
+    width: 1000px;
+    background-color: #ffffff;
+    padding: 60px 100px;
+    transition: all 0.3s;
+    height: fit-content;
+    display: block;
+    margin-top: 30px;
+}
+
+.header-warning{
+    display: inline;
+    float: left;
+    line-height: 45px;
+    color: white;
+    text-decoration: none;
+    padding: 0 35px;
+    font-weight: bold;
+    margin-left: 30%;
+}
+
+.header-logo{
+    float: left;
+    line-height: 45px;
+    background-color: rgb(255, 94, 0);
+    color: white;
+    text-decoration: none;
+    padding: 0 35px;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+.wholePlaylist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.header-login:hover {
+    background-color: rgba(51, 51 ,51  0.5);
+}

@@ -1,0 +1,17 @@
+.loginButton {
+    float: right;
+    display: inline;
+    line-height: 45px;
+    padding: 0 25px;
+    box-sizing: border-box;
+    background-color: rgb(51, 51, 51);
+    border: none;
+    transition: all 0.3s;
+    color: white;
+    text-decoration: none;
+    border-left: 1px solid rgb(79, 79, 79);
+    border-right: 1px solid rgb(79, 79, 79);
+}
+.loginButton:hover {
+    background-color: rgb(37, 37, 37); 
+}
