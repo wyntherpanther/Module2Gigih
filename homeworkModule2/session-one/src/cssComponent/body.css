@@ -42,3 +42,23 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+@media all and (max-width: 1000px) {
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: #ffffff;
+    }
+
+}
+
+@media (max-width: 670px) {
+
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: #ffffff;
+    }
+
+
+}

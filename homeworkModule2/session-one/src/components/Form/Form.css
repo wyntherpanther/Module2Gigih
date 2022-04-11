@@ -41,3 +41,40 @@ input {
 input:focus {
     outline: none;
 }
+
+@media all and (max-width: 1000px) {
+    
+    form {
+        margin-bottom: 50px;
+        display: block;
+        
+    }
+    
+    .formHeader{
+        font-size: 40px;
+        text-align: left;
+    }
+    
+}
+
+@media (max-width: 670px) {
+
+    .formHeader{
+        font-size: 30px;
+
+        text-align: left;
+    }
+
+    .desc {
+        text-align: justify;
+    }
+
+    form {
+        margin-bottom: 50px;
+        display: block;
+    }
+    .songForm {
+        padding: 30px ;
+    }
+
+}

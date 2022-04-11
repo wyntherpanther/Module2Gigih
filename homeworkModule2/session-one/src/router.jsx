@@ -22,6 +22,7 @@ const Routing = () => {
             </Route>
 
             <Redirect from="*" to="/" />
+
         </Switch>
 
     )

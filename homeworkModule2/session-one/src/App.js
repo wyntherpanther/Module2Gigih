@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './cssComponent/App.css';
 import './cssComponent/body.css'
-import './cssComponent/Interactivity.css'
+// import './cssComponent/Interactivity.css'
 import './components/Form/Form.css'
 import './components/header/header.css'
 import './components/login/loginButton.css'

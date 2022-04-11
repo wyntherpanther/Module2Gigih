@@ -43,7 +43,8 @@
     } 
 
     .searchForm{
-        margin-left: 5%;
+        /* margin-left: 5%; */
+        grid-column: 1/span 10;
     }
 
     

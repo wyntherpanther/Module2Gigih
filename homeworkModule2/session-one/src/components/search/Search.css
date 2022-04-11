@@ -1,14 +1,13 @@
 .searchForm{
     font-weight: normal;
-    margin-top: 10px;
     display: inline;
-    margin-left: 15%;
+    grid-column: 4/ span 6;
 }
 
 .searchInput {
     padding: 0 20px;
     margin: 10px 10px;
-    width: 30%;
+    width: 50%;
     border: none;
     border-bottom: 1px solid #dee7ec;
     font-family: "Roboto", sans-serif;
@@ -35,3 +34,27 @@
     background-color: rgb(37, 37, 37); 
 }
 
+@media all and (max-width: 1000px) {
+
+    .searchForm{
+        grid-column: 3/span 7;
+    }
+
+    
+}
+
+@media (max-width: 670px) {
+
+    .searchButton {
+        margin-right: 0;
+        padding-right:20px;
+        padding-left:20px;
+    }
+    
+    .searchForm{
+        grid-column: 1/span 9;
+    }
+    
+   
+
+}
