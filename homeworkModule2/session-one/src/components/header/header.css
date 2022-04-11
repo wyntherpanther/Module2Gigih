@@ -8,6 +8,7 @@ header {
     display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    /* -ms-grid-columns: repeat(10, 1fr); */
     grid-template-rows: 45px;
 
 }
