@@ -14,10 +14,21 @@ import {
 import Routing from './router';
 import { Provider } from 'react-redux';
 import  store  from "./components/token/store";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#ff5e00',
+      },
+    },
+  });
+  
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <Provider store= {store}>
         
@@ -29,6 +40,7 @@ function App() {
     
     </Provider>
     </Router>
+    </ThemeProvider>
   );
 }
 

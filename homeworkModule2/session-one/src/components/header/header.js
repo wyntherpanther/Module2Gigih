@@ -4,6 +4,7 @@ import axios from 'axios';
 import Item from '../PlaylistItem/Item'
 import FormSubmission from "../Form/form";
 import TokenTaker from "../token/takingToken.jsx"
+import { Button, Dialog, ImageList, Skeleton, Typography } from "@mui/material";
 
 
 const Header = ({realHeader}) =>{
@@ -13,6 +14,7 @@ const Header = ({realHeader}) =>{
     const [tracks, setTracks] = useState([])
     const [selectedTracks, setSelectedTracks] = useState([])
     const [combinedTrack, setCombinedTrack] = useState([])
+    const [open, setOpen] = useState(false);
     const [user, setUser] = useState({
         name: '',
         description: '',
@@ -36,6 +38,7 @@ const Header = ({realHeader}) =>{
 
     const handleSearchChange = (e) => {
         setSearchKey(e.target.value)
+        searchArtists();
     }
 
     ///////////////////////////////////////////Search handler/////////////////////////////////////////////////
@@ -95,15 +98,33 @@ const Header = ({realHeader}) =>{
         
 } 
     ///////////////////////////////////////////Form handler/////////////////////////////////////////////////
-    
+   
 
     function renderPlayListItems() {
         return combinedTrack.map(item => {
             return (
-                <Item key={item.uri} track={item} onSelectedTrack={handleSelectedTrack}/>
+                <Item key={item.uri} track={item} onSelectedTrack={handleSelectedTrack} />) 
+        })
+    }
+
+    function renderSelectedItems() {
+        return selectedTracks.map(item => {
+            return (
+                selectedTracks
+                ? (<Item key={item.uri} track={item} onSelectedTrack={handleSelectedTrack} selected={true}/>)
+                : (<Skeleton variant="rectangular" width={210} height={118}/>)
                 )
         })
     }
+    
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
 
     return(
     <div className="whole">
@@ -112,11 +133,67 @@ const Header = ({realHeader}) =>{
         
         <div className="body">
             <div className="main2">
-                {realHeader}
-                <FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} />
+            
                 <div className="Songs">  
-                    {renderPlayListItems()}
+                <Typography gutterBottom variant="h3" component="div" >
+                Search Result.
+                </Typography>
+                    <ImageList
+                    sx={{
+                        gridAutoFlow: "column",
+                        gridTemplateColumns: "repeat(max(300px, 1fr))",
+                        gridAutoColumns: "max(300px, 1fr)",
+                        mx:5
+                    }}
+                    gap={20}
+                    >
+                        {combinedTrack.length > 0
+                        ?  renderPlayListItems()
+                        :   <>
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        
+                        </>
+                        }
+                        
+                        
+                    </ImageList>
                 </div>
+            
+
+                <div className="selectedSongs">  
+                    <Typography gutterBottom variant="h4" component="div" sx={{mb:3}}>
+                    Selected.
+                    </Typography>
+                    <ImageList
+                    sx={{
+                        gridAutoFlow: "column",
+                        gridTemplateColumns: "repeat(max(300px, 1fr))",
+                        gridAutoColumns: "max(300px, 1fr)",
+                        mx:5
+                    }}
+                    gap={20}
+                    >
+                        {selectedTracks.length > 0
+                        ? renderSelectedItems()
+                        :   <>
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        <Skeleton animation={false} variant="rectangular" width={180} height={270} />
+                        </>
+                        }
+                        
+                    </ImageList>
+                </div>
+                <Button variant="contained" onClick={handleClickOpen} sx={{m : 5, py : 2, width:"91%"}}>
+                    Make The Playlist Request
+                </Button>
+                <Dialog open={open} onClose={handleClose} > 
+                <FormSubmission user={user} handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} />
+                </Dialog>
             </div>
         </div> 
     </div>
