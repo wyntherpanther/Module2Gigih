@@ -1,15 +1,16 @@
-import { DialogContent, DialogContentText, DialogTitle, FormHelperText, InputLabel, Paper } from "@mui/material"
+import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle, FormHelperText, InputLabel, Paper } from "@mui/material"
 
-const FormSubmission = ({ user, handleFormChange, handleFormSubmit }) => {
+const FormSubmission = ({ user, handleFormChange, handleFormSubmit, handleClose }) => {
 
     return (
         <Paper
             component="form"
 
             className="songForm" onSubmit={handleFormSubmit}
+            sx={{ pb: 5 }}
         >
             <DialogTitle>Make The Playlist Request</DialogTitle>
-            <DialogContent>
+            <DialogContent sx={{ pb: 0 }}>
                 <DialogContentText sx={{ mb: 3 }}>
                     To subscribe to this website, please enter your email address here. We
                     will send updates occasionally.
@@ -41,12 +42,13 @@ const FormSubmission = ({ user, handleFormChange, handleFormSubmit }) => {
                     required
                 />
 
+                <DialogActions sx={{ px: 0, display: "block", textAlign: "center" }}>
 
-                <div className="submitButt">
                     <input id="button1" className="buttonTemplate btn-message1" value="Submit" type="submit" />
-                </div>
+                    <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
+                    <Button onClick={handleClose}>Cancel</Button>
+                </DialogActions>
 
-                <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
 
 
             </DialogContent >

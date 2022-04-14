@@ -9,7 +9,7 @@ const SearchComponent = ({ searchArtists, handleSearchChange }) => {
 
         <Paper
             component="form"
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, height: 30, m: '8px 0' }}
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, height: 25, m: '10px 0' }}
             className="searchForm" onSubmit={searchArtists}
         >
             <InputBase
