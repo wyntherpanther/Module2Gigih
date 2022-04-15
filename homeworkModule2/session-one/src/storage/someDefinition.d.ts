@@ -77,7 +77,7 @@ export interface ItemA {
     track_number: number;
     type: string;
     uri: string;
-    isSelected: boolean;
+    isSelected?: ItemA;
 }
 
 export interface Tracks {
