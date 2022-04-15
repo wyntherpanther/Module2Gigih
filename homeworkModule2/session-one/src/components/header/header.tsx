@@ -2,34 +2,24 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Item from '../PlaylistItem/Item'
 import FormSubmission from "../Form/form";
-import TokenTaker from "../token/takingToken.jsx"
+import TokenTaker from "../token/takingToken"
 import { Button, Dialog, ImageList, Skeleton, Typography } from "@mui/material";
 import { useAppSelector } from "../token/hooks";
-import { ItemA, Tracks } from "../../storage/someDefinition"
+import { ItemA, IUser } from "../../storage/someDefinition"
 // import { type } from "@testing-library/user-event/dist/type";
-
 interface props {
-
-    realHeader: any;
-
-}
-interface tracks {
-    tracks: Tracks;
-}
-
-interface track {
-    track: ItemA;
+    realHeader: JSX.Element;
 }
 
 const Header = ({ realHeader }: props) => {
 
     const token = useAppSelector(state => state.account.value);
-    const [searchKey, setSearchKey] = useState("")
-    const [tracks, setTracks] = useState<tracks[]>([])
-    const [selectedTracks, setSelectedTracks] = useState([])
-    const [combinedTrack, setCombinedTrack] = useState([])
-    const [open, setOpen] = useState(false);
-    const [user, setUser] = useState({
+    const [searchKey, setSearchKey] = useState<string>("")
+    const [tracks, setTracks] = useState<ItemA[]>([])
+    const [selectedTracks, setSelectedTracks] = useState<Array<ItemA>>([])
+    const [combinedTrack, setCombinedTrack] = useState<Array<ItemA>>([])
+    const [open, setOpen] = useState<boolean>(false);
+    const [user, setUser] = useState<IUser>({
         name: '',
         description: '',
         public: true
@@ -38,7 +28,7 @@ const Header = ({ realHeader }: props) => {
 
     ///////////////////////////////////////////Search handler/////////////////////////////////////////////////
 
-    const searchArtists = async (e: any) => {
+    const searchArtists: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault()
         const searchUrl = "https://api.spotify.com/v1/search";
         const Params = {
@@ -60,17 +50,17 @@ const Header = ({ realHeader }: props) => {
     ///////////////////////////////////////////Select handler/////////////////////////////////////////////////
 
     useEffect(() => {
-        const combinedTrackWithSelectedTrack = tracks.map((track) => ({
-            isSelected: selectedTracks.find(t => t.uri === track.uri),
+        const combinedTrackWithSelectedTrack = tracks.map((track: any) => ({
+            isSelected: selectedTracks.find((t) => t.uri === track.uri),
             ...track,
         }));
         setCombinedTrack(combinedTrackWithSelectedTrack);
     }, [selectedTracks, tracks]);
 
-    const handleSelectedTrack = (track: object) => {
-        const alreadySelected = selectedTracks.find(t => t.uri === track.uri)
+    const handleSelectedTrack = (track: ItemA) => {
+        const alreadySelected = selectedTracks.find((t) => t.uri === track.uri)
         if (alreadySelected) {
-            setSelectedTracks(selectedTracks.filter(t => t.uri !== track.uri))
+            setSelectedTracks(selectedTracks.filter((t) => t.uri !== track.uri))
         } else {
             setSelectedTracks((selectedTracks) => [...selectedTracks, track])
         }
@@ -86,9 +76,9 @@ const Header = ({ realHeader }: props) => {
         setUser({ ...user, [name]: value })
     }
 
-    const handleFormSubmit = (e: any) => {
-        e.preventDefault();
-        const uris = selectedTracks.map(item => item.uri);
+    const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+        event.preventDefault();
+        const uris = selectedTracks.map((item) => item.uri);
         const headerAll = { Authorization: `Bearer ${token}` };
         const apiSpotify = "https://api.spotify.com/v1"
         const playlistRequest = {
@@ -114,14 +104,14 @@ const Header = ({ realHeader }: props) => {
 
 
     function renderPlayListItems() {
-        return combinedTrack.map(item => {
+        return combinedTrack.map((item) => {
             return (
                 <Item key={item.uri} track={item} onSelectedTrack={handleSelectedTrack} selected={false} />)
         })
     }
 
     function renderSelectedItems() {
-        return selectedTracks.map(item => {
+        return selectedTracks.map((item) => {
             return (
                 selectedTracks
                     ? (<Item key={item.uri} track={item} onSelectedTrack={handleSelectedTrack} selected={true} />)
@@ -140,6 +130,7 @@ const Header = ({ realHeader }: props) => {
     };
 
     const skeleton = <>
+
         <Skeleton animation={false} variant="rectangular" width={180} height={270} />
         <Skeleton animation={false} variant="rectangular" width={180} height={270} />
         <Skeleton animation={false} variant="rectangular" width={180} height={270} />

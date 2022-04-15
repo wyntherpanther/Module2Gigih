@@ -8,7 +8,6 @@ const LoginPage = () => {
     return (
         <div className="whole">
             <TokenTaker />
-
             <div className="body">
                 <div className="main2">
                     <Description />

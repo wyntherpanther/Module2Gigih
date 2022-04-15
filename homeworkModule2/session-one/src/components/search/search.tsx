@@ -3,8 +3,12 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
+interface props {
+    searchArtists?: React.FormEventHandler<HTMLFormElement> | undefined;
+    handleSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
+}
 
-const SearchComponent = ({ searchArtists, handleSearchChange }) => {
+const SearchComponent = ({ searchArtists, handleSearchChange }: props) => {
     return (
 
         <Paper

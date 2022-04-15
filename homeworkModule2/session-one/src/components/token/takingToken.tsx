@@ -5,8 +5,12 @@ import { login } from "./slice";
 import { Link } from "react-router-dom";
 import LoginButton from "../login/login";
 
+interface props {
+    searchArtists?: React.FormEventHandler<HTMLFormElement> | undefined;
+    handleSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
+}
 
-const TokenTaker = ({ searchArtists, handleSearchChange }) => {
+const TokenTaker = ({ searchArtists, handleSearchChange }: props) => {
     const autentication = {
         AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
         CLIENT_ID: "a83b7e2cfcb64a2993d8cd07e9e28575",
@@ -17,18 +21,23 @@ const TokenTaker = ({ searchArtists, handleSearchChange }) => {
     };
 
     const dispatch = useDispatch();
-    const [token, setToken] = useState("")
+    const [token, setToken] = useState<string>("")
 
 
     useEffect(() => {
         const hash = window.location.hash
         let token = window.localStorage.getItem("token")
         if (!token && hash) {
-            token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+            token = (
+                hash
+                    .substring(1)
+                    .split("&")
+                    .find(elem => elem.startsWith("access_token")) as string
+            ).split("=")[1];
             window.location.hash = ""
-            window.localStorage.setItem("token", token)
+            window.localStorage.setItem("token", String(token))
         }
-        setToken(token)
+        setToken(String(token))
         dispatch(login(token))
     }, [dispatch])
 

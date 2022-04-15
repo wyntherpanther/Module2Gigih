@@ -1,12 +1,18 @@
 import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle, FormHelperText, InputLabel, Paper } from "@mui/material"
+interface props {
+    user: { name: string; description: string; }
+    handleFormChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleFormSubmit: React.FormEventHandler<HTMLFormElement>;
+    handleClose: React.MouseEventHandler<HTMLButtonElement>;
+}
 
-const FormSubmission = ({ user, handleFormChange, handleFormSubmit, handleClose }) => {
+const FormSubmission = ({ user, handleFormChange, handleFormSubmit, handleClose }: props) => {
 
     return (
         <Paper
             component="form"
-
-            className="songForm" onSubmit={handleFormSubmit}
+            className="songForm"
+            onSubmit={handleFormSubmit}
             sx={{ pb: 5 }}
         >
             <DialogTitle>Make The Playlist Request</DialogTitle>
@@ -26,7 +32,7 @@ const FormSubmission = ({ user, handleFormChange, handleFormSubmit, handleClose 
                     onChange={handleFormChange}
                     value={user.name}
                     required
-                    minLength="10"
+                    minLength={10}
                     aria-describedby="my-helper-text"
                 />
 
@@ -43,13 +49,10 @@ const FormSubmission = ({ user, handleFormChange, handleFormSubmit, handleClose 
                 />
 
                 <DialogActions sx={{ px: 0, display: "block", textAlign: "center" }}>
-
                     <input id="button1" className="buttonTemplate btn-message1" value="Submit" type="submit" />
                     <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
                     <Button onClick={handleClose}>Cancel</Button>
                 </DialogActions>
-
-
 
             </DialogContent >
         </Paper >

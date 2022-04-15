@@ -94,3 +94,17 @@ export interface RootObject {
     tracks: Tracks;
 }
 
+
+
+export interface IUser {
+    name: string;
+    description: string;
+    public: boolean;
+}
+export interface Stringer {
+    AUTH_ENDPOINT: string
+    CLIENT_ID: string
+    RESPONSE_TYPE: string
+    REDIRECT_URL: string
+    SCOPE: string
+}

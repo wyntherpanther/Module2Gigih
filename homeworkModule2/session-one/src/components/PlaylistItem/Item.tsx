@@ -1,6 +1,11 @@
 import { Card, CardActionArea, CardContent, CardMedia, ImageListItem, Typography } from "@mui/material";
-
-const Item = ({ track, onSelectedTrack, selected }) => {
+import { ItemA } from "../../storage/someDefinition";
+interface prop {
+  track: ItemA
+  onSelectedTrack: Function
+  selected: boolean
+}
+const Item = ({ track, onSelectedTrack, selected }: prop) => {
   const { album, name: songName, artists, isSelected, } = track;
   return (
 

@@ -1,10 +1,10 @@
-const Description = () =>{
-    return(
-        <>
-        <h1 className="header">
-        Wynnie's 
+const Description = () => {
+  return (
+    <>
+      <h1 className="header">
+        Wynnie's
       </h1>
-      <br/>
+      <br />
       <h1 className="header">
         Playlist.
       </h1>
@@ -17,8 +17,8 @@ const Description = () =>{
         sapiente nesciunt inventore perferendis deleniti saepe cumque aliquam
         nam quo, esse at laudantium.
       </p>
-      </>
-    )
+    </>
+  )
 }
 
 export default Description
