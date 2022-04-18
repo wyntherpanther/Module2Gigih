@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+import { useAppDispatch } from "./hooks";
 import SearchComponent from "../search/search";
 import { login } from "./slice";
 import { Link } from "react-router-dom";
@@ -20,7 +21,7 @@ const TokenTaker = ({ searchArtists, handleSearchChange }: props) => {
         SCOPE: "playlist-modify-private"
     };
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [token, setToken] = useState<string>("")
 
 

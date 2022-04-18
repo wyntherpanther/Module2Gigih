@@ -22,7 +22,7 @@ const SearchComponent = ({ searchArtists, handleSearchChange }: props) => {
                 inputProps={{ 'aria-label': 'song search' }}
                 onChange={handleSearchChange}
             />
-            <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+            <IconButton data-testid='buttonSearch' type="submit" sx={{ p: '10px' }} aria-label="search">
                 <SearchIcon />
             </IconButton>
 

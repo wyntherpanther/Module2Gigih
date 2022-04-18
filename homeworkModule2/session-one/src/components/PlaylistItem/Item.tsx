@@ -20,7 +20,7 @@ const Item = ({ track, onSelectedTrack, selected }: prop) => {
           />
           <CardContent sx={{ p: "10px 5px 8px 5px" }}>
             <Typography gutterBottom variant="h5" component="div">
-              <span className="songTitle">{album.name}</span>
+              <span className="songTitle" data-testid="songTitle" >{album.name}</span>
             </Typography>
             <Typography gutterBottom variant="body2" color="text.secondary">
               <h2 className="songArtist">{artists.map(artist => artist.name).join(', ')}</h2>

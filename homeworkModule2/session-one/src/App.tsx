@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 import Routing from './router';
 import { Provider } from 'react-redux';
-import  store  from "./components/token/store";
+import store from "./components/token/store";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
@@ -25,20 +25,20 @@ function App() {
       },
     },
   });
-  
+
   return (
     <ThemeProvider theme={theme}>
-    <Router>
-      <Provider store= {store}>
-        
-    <div className="App">
+      <Router>
+        <Provider store={store}>
 
-      <Routing/>
-      
-    </div>
-    
-    </Provider>
-    </Router>
+          <div className="App">
+
+            <Routing />
+
+          </div>
+
+        </Provider>
+      </Router>
     </ThemeProvider>
   );
 }
