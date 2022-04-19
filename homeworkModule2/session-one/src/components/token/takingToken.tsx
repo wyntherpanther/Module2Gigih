@@ -59,7 +59,7 @@ const TokenTaker = ({ searchArtists, handleSearchChange }: props) => {
             }
             {!token
                 ? <LoginButton {...autentication} />
-                : <Link to="/"><button id="button1" className="loginButton" onClick={logout}>Logout</button></Link>
+                : <Link to="/"><button data-testid="loginButton" id="button1" className="loginButton" onClick={logout}>Logout</button></Link>
             }
         </header>
 

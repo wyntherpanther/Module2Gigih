@@ -10,7 +10,7 @@ import Playlist from '../../../Pages/Home/mainPage'
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
-import axios from 'axios'
+import App from '../../../App'
 
 jest.mock('axios');
 
@@ -45,24 +45,17 @@ test('testing if the Search works', async () => {
 
 test('testing if the Submit works', async () => {
 
-  render(<HeaderA />);
+  render(<App />);
 
+  const button = screen.getByTestId("songTitle");
   const Input = screen.getByRole('textbox', { name: "song search" });
   const search = screen.getByTestId("buttonSearch");
   const title = screen.getByTestId("songTitle");
 
+
+  userEvent.click(button)
   userEvent.type(Input, "A Night At The Opera (2011 Remaster)");
   userEvent.click(search)
   await waitFor(() => { expect(title).toBeCalled(); })
 
 });
-
-
-
-
-// const Input = screen.getByPlaceholderText("What song do you want?");
-//   const search = screen.getByRole('button', {type: "submit"})
-//   const Item = screen.getByTestId("songTitle")
-//   await userEvent.type(Input, "sonic")
-//   await userEvent.click(search)
-//   await expect(Item).toBeInTheDocument();
