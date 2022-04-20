@@ -14,9 +14,9 @@ interface props {
 const TokenTaker = ({ searchArtists, handleSearchChange }: props) => {
     const autentication = {
         AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
-        CLIENT_ID: "a83b7e2cfcb64a2993d8cd07e9e28575",
+        CLIENT_ID: process.env.REACT_APP_SPOTIFY_CLIENT_ID as string,
         CLIENT_SECRET: "da696cbbdd524ef5930fe289f20fb4ed",
-        REDIRECT_URL: "http://localhost:3000/",
+        REDIRECT_URL: process.env.REACT_APP_SPOTIFY_CALLBACK || process.env.VERCEL_URL as string,
         RESPONSE_TYPE: "token",
         SCOPE: "playlist-modify-private"
     };

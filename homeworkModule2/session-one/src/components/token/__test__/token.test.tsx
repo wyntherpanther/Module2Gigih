@@ -51,8 +51,6 @@ test('testing if the Submit works', async () => {
   const Input = screen.getByRole('textbox', { name: "song search" });
   const search = screen.getByTestId("buttonSearch");
   const title = screen.getByTestId("songTitle");
-
-
   userEvent.click(button)
   userEvent.type(Input, "A Night At The Opera (2011 Remaster)");
   userEvent.click(search)
