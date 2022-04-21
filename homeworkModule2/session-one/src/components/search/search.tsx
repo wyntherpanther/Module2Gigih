@@ -13,7 +13,7 @@ const SearchComponent = ({ searchArtists, handleSearchChange }: props) => {
 
         <Paper
             component="form"
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, height: 25, m: '10px 0' }}
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', height: 25, m: '10px 0', width: { xs: 250, xxs: 100, xl: 400 } }}
             className="searchForm" onSubmit={searchArtists}
         >
             <InputBase
